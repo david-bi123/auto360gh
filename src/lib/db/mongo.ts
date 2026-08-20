@@ -244,7 +244,9 @@ export function isMongoConnected(): boolean {
 function toQuery(query: Query): Record<string, unknown> {
   const out: Record<string, unknown> = {};
   for (const [k, v] of Object.entries(query)) {
-    if (v instanceof RegExp) {
+    if (Array.isArray(v)) {
+      out[k] = v.map((item) => (item && typeof item === "object" && !(item instanceof Date) ? toQuery(item as Query) : item));
+    } else if (v instanceof RegExp) {
       out[k] = v;
     } else if (v && typeof v === "object" && !(v instanceof Date)) {
       const op = v as Record<string, unknown>;
