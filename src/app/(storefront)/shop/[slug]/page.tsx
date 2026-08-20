@@ -8,6 +8,8 @@ import { ProductGrid } from "@/components/products/product-grid";
 import { SectionHeading } from "@/components/products/product-grid";
 import { Card, CardContent } from "@/components/ui/card";
 
+export const revalidate = 60;
+
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
   const { slug } = await params;
   const product = await getProductBySlug(slug);

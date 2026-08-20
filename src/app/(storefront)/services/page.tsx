@@ -6,6 +6,8 @@ import { getSettings, whatsappLink } from "@/lib/services/settings";
 import { ProductImage } from "@/components/ui/product-image";
 import { BrandMarquee } from "@/components/home/sections";
 
+export const revalidate = 300;
+
 export const metadata: Metadata = {
   title: "Services — Mechanical Work, Detailing, Lubricants & Spare Parts",
   description:

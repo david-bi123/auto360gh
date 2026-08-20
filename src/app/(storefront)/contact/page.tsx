@@ -3,6 +3,8 @@ import { Phone, Mail, MapPin, Clock, MessageCircle } from "lucide-react";
 import { getSettings, whatsappLink } from "@/lib/services/settings";
 import { ContactForm } from "@/components/contact/contact-form";
 
+export const revalidate = 300;
+
 export const metadata: Metadata = {
   title: "Contact Auto360 Gh — Automotive Products & Services, Accra",
   description:

@@ -3,6 +3,8 @@ import { BadgeCheck, Truck, Wrench, MapPin, Target, Users, ShieldCheck } from "l
 import { getSettings } from "@/lib/services/settings";
 import { BrandMarquee, TrustSection, ReviewsSection } from "@/components/home/sections";
 
+export const revalidate = 300;
+
 export const metadata: Metadata = {
   title: "About Auto360 Gh — Your Automotive Partner in Accra",
   description:

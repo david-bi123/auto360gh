@@ -11,7 +11,7 @@ const schemaDefs = {
   User: {
     _id: idDef,
     name: { type: String, required: true },
-    email: { type: String, required: true, lowercase: true, index: true },
+    email: { type: String, required: true, lowercase: true },
     phone: String,
     passwordHash: { type: String, required: true },
     role: { type: String, required: true, default: "customer", index: true },
@@ -223,9 +223,58 @@ export type ModelName = keyof typeof schemaDefs;
 
 const models = new Map<ModelName, Model<any>>();
 
+function addIndexes(name: ModelName, schema: mongoose.Schema) {
+  switch (name) {
+    case "User":
+      schema.index({ email: 1 }, { unique: true });
+      break;
+    case "Category":
+      schema.index({ featured: 1, sortOrder: 1 });
+      break;
+    case "Brand":
+      schema.index({ featured: 1, sortOrder: 1 });
+      break;
+    case "Product":
+      schema.index({ active: 1, category: 1, featured: -1, createdAt: -1 });
+      schema.index({ active: 1, brand: 1, featured: -1, createdAt: -1 });
+      schema.index({ active: 1, price: 1 });
+      schema.index({ active: 1, createdAt: -1 });
+      schema.index({ active: 1, name: 1 });
+      schema.index({ active: 1, onSale: -1, createdAt: -1 });
+      schema.index({ active: 1, stock: 1 });
+      break;
+    case "Order":
+      schema.index({ status: 1, createdAt: -1 });
+      schema.index({ email: 1, createdAt: -1 });
+      schema.index({ phone: 1, createdAt: -1 });
+      schema.index({ createdAt: -1 });
+      break;
+    case "Sale":
+      schema.index({ createdAt: -1 });
+      schema.index({ paymentMethod: 1, createdAt: -1 });
+      break;
+    case "Customer":
+      schema.index({ phone: 1 });
+      schema.index({ email: 1 });
+      break;
+    case "InventoryMovement":
+      schema.index({ productId: 1, createdAt: -1 });
+      schema.index({ type: 1, createdAt: -1 });
+      break;
+    case "Service":
+      schema.index({ active: 1, sortOrder: 1 });
+      break;
+    case "Notification":
+      schema.index({ read: 1, createdAt: -1 });
+      schema.index({ createdAt: -1 });
+      break;
+  }
+}
+
 function getModel<T>(name: ModelName): Model<T> {
   if (!models.has(name)) {
     const schema = new mongoose.Schema(schemaDefs[name] as SchemaDefinition, { timestamps: true });
+    addIndexes(name, schema);
     models.set(name, mongoose.models[name] ?? mongoose.model(name, schema));
   }
   return models.get(name) as Model<T>;

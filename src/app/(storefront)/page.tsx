@@ -11,6 +11,8 @@ import { getServices } from "@/lib/services/public";
 import { getFeaturedCategories } from "@/lib/services/catalog";
 import { ProductImage } from "@/components/ui/product-image";
 
+export const revalidate = 60;
+
 export const metadata: Metadata = {
   title: "Auto360 Gh — Premium Automotive Products, Lubricants & Services in Accra",
   description:

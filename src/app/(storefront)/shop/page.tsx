@@ -8,6 +8,8 @@ import { ProductGrid, ProductGridSkeleton } from "@/components/products/product-
 import { ShopPagination } from "@/components/products/shop-pagination";
 import { EmptyState } from "@/components/ui/card";
 
+export const revalidate = 30;
+
 export const metadata: Metadata = {
   title: "Shop Automotive Products — Engine Oils, Additives & Spare Parts",
   description:

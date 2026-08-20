@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import { MapPin, Navigation, Phone, MessageCircle } from "lucide-react";
 import { getSettings, whatsappLink } from "@/lib/services/settings";
 
+export const revalidate = 300;
+
 export const metadata: Metadata = {
   title: "Our Location — Auto360 Gh, 103 Hallelujah Broadway, Accra",
   description:
