@@ -75,13 +75,6 @@ export function LoginForm({ brandName }: { brandName: string }) {
           Create an account
         </a>
       </p>
-      <div className="rounded-xl bg-carbon-50 p-3 text-center">
-        <p className="text-xs font-semibold text-carbon-600">Demo staff accounts</p>
-        <p className="mt-1 text-[11px] text-carbon-400">
-          admin@auto360gh.com · manager@auto360gh.com · cashier@auto360gh.com
-        </p>
-        <p className="text-[11px] text-carbon-400">Password for all: @360Gh123</p>
-      </div>
       <p className="text-center text-xs text-carbon-400">Powered by {brandName}</p>
     </form>
   );
