@@ -9,7 +9,7 @@ import { useCartCount } from "@/store/cart";
 const items = [
   { href: "/", label: "Home", icon: Home },
   { href: "/shop", label: "Shop", icon: ShoppingBag },
-  { href: "/orders", label: "Orders", icon: Package },
+  { href: "/account/orders", label: "Orders", icon: Package },
   { href: "/cart", label: "Cart", icon: ShoppingCart },
   { href: "/account", label: "Account", icon: User },
 ];

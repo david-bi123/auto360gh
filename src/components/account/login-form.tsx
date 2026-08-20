@@ -6,9 +6,8 @@ import { Eye, EyeOff, LogIn } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Field, Input } from "@/components/ui/field";
 import { useToast } from "@/components/ui/toast";
-import type { BusinessSettings } from "@/types";
 
-export function LoginForm({ settings }: { settings: BusinessSettings }) {
+export function LoginForm({ brandName }: { brandName: string }) {
   const router = useRouter();
   const searchParams = useSearchParams();
   const { toast } = useToast();
@@ -83,7 +82,7 @@ export function LoginForm({ settings }: { settings: BusinessSettings }) {
         </p>
         <p className="text-[11px] text-carbon-400">Password for all: @360Gh123</p>
       </div>
-      <p className="text-center text-xs text-carbon-400">Powered by {settings.name}</p>
+      <p className="text-center text-xs text-carbon-400">Powered by {brandName}</p>
     </form>
   );
 }

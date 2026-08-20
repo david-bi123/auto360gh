@@ -1,6 +1,8 @@
 import type { OrderStatus, PaymentMethod, Role } from "@/types";
 
 export const BUSINESS_PHONE = "+233598954177";
+export const BUSINESS_NAME = "Auto360 Gh";
+export const BRAND_NAME = BUSINESS_NAME;
 export const BUSINESS_WHATSAPP = "233598954177";
 export const BUSINESS_ADDRESS = "103 Hallelujah Broadway, Accra";
 export const BUSINESS_PLUS_CODE = "MRQ9+W7 Accra";

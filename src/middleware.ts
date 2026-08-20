@@ -7,6 +7,7 @@ const ADMIN_PREFIX = "/admin";
 const POS_PREFIX = "/pos";
 const ACCOUNT_PREFIX = "/account";
 const LOGIN = "/account/login";
+const REGISTER = "/account/register";
 
 function hasRole(role: Role | undefined, allowed: Role[]): boolean {
   return !!role && allowed.includes(role);
@@ -27,7 +28,7 @@ export async function middleware(request: NextRequest) {
   }
 
   if (!session) {
-    if (pathname === LOGIN) return NextResponse.next();
+    if (pathname === LOGIN || pathname === REGISTER) return NextResponse.next();
     const url = new URL(LOGIN, request.url);
     url.searchParams.set("from", pathname);
     return NextResponse.redirect(url);
