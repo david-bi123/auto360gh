@@ -283,7 +283,6 @@ function getModel<T>(name: ModelName): Model<T> {
 export async function connectMongo(uri: string): Promise<void> {
   if (mongoose.connection.readyState === 1 || mongoose.connection.readyState === 2) return;
   await mongoose.connect(uri, { serverSelectionTimeoutMS: 8000 });
-  await mongoose.syncIndexes();
 }
 
 export function isMongoConnected(): boolean {

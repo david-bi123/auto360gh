@@ -4,6 +4,7 @@ dotenv.config({ path: ".env.local" });
 dotenv.config({ path: ".env" });
 
 import { getDb, getBackend, resetDbCache } from "../src/lib/db";
+import mongoose from "mongoose";
 
 async function main() {
   resetDbCache();
@@ -11,6 +12,11 @@ async function main() {
   const backend = getBackend();
 
   console.log(`[seed] backend: ${backend}`);
+
+  if (backend === "mongo") {
+    console.log("[seed] syncing indexes…");
+    await mongoose.syncIndexes();
+  }
 
   const settings = await db.businessSettings.findOne({});
   const social = await db.socialLinks.findOne({});
