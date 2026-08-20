@@ -4,6 +4,8 @@ import { WhatsAppFloat } from "@/components/layout/whatsapp-float";
 import { BottomNav } from "@/components/layout/bottom-nav";
 import { getSettings, getSocialLinks } from "@/lib/services/settings";
 
+export const revalidate = 300;
+
 export default async function StorefrontLayout({ children }: { children: React.ReactNode }) {
   const [settings, social] = await Promise.all([getSettings(), getSocialLinks()]);
 
